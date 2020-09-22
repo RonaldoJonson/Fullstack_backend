@@ -4,9 +4,7 @@ import UserDB from "../database/UserDatabase"
 import Authenticator from "../services/Authenticator"
 
 export default async function (req: Request, res: Response) {
-
   try {
-
     const { email, password } = req.body
     const user = await new UserDB().getUserByEmail(email)
     const passwordIsCorrect = await new HashManger().compare(password, user.password)

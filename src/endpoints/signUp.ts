@@ -13,9 +13,9 @@ async function signUp(req: Request, res: Response){
       throw new Error("\"name\", \"email\" e \"password\" são obrigatórios.")
     }
     
-    const cypherText = await new HashManger().hash(password)
+    const passwordHash = await new HashManger().hash(password)
 
-    await new UserDB().createUser(id, name, email, cypherText)
+    await new UserDB().createUser(id, name, email, passwordHash)
 
     const token = Authenticator.generateToken({id})
 

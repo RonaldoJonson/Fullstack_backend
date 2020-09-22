@@ -10,6 +10,8 @@ import login from "./endpoints/login";
 import getOwnProfile from "./endpoints/getOwnProfile";
 import getRecipesFeed from "./endpoints/getRecipesFeed";
 import getUserById from "./endpoints/getUserById";
+import { CreateVideo } from "./endpoints/createVideo";
+import { GetVideos } from './endpoints/GetVideo';
 
 dotenv.config();
 
@@ -22,8 +24,12 @@ app.get('/user/profile', getOwnProfile)
 app.get('/user/feed', getRecipesFeed)
 app.get('/user/:id', getUserById)
 
+app.post('/video', CreateVideo);
+app.get('/video', GetVideos);
+
 app.post('/recipe', CreateRecipe);
 app.get('/recipe/:id', GetRecipe);
+
 app.post('/user/follow', CreateFollow);
 app.post('/user/unfollow', RemoveFollow);
 
@@ -31,8 +37,8 @@ app.post('/user/unfollow', RemoveFollow);
 const server = app.listen(process.env.PORT || 3000, () => {
   if(server) {
     const address = server.address() as AddressInfo;
-    console.log(`Server is running in http://localhost:${address.port}`)
+    console.log(`Server is running in http://localhost:${address.port}`);
   } else {
-    console.error(`Failure upon starting server`)
+    console.error(`Failure upon starting server`);
   }
 });

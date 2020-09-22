@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "ntc && node build/index.js",
-    "startjest": "node ./node_modules/jest/bin/jest.js"
+    "startjest": "node ./node_modules/jest/bin/jest.js",
+    "build": tsc
   },
   "repository": {
     "type": "git",

@@ -20,9 +20,7 @@ export const RemoveFollow = async(req: Request, res: Response) => {
             message: "Follow Removed",
             token
         })
-
-
-    }catch (e) {
+    } catch (e) {
         res.status(400).send({
             message: e.message
         })
