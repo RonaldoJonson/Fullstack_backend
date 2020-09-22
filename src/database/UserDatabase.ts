@@ -1,7 +1,5 @@
 import BaseDatabase from './BaseDatabase';
 import moment from 'moment' 
-import FollowDB from './FollowDatabase';
-import RecipeDB from './RecipeDatabase';
 
 export default class UserDB extends BaseDatabase
 {
