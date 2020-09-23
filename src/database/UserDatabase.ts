@@ -3,7 +3,7 @@ import moment from 'moment'
 
 export default class UserDB extends BaseDatabase
 {
-  private static TABLE_NAME: string = 'User_Cookenu';
+  private static TABLE_NAME: string = 'User_Youtube';
 
   public async createUser (id: string, name: string, email: string, password: string) :Promise<void>{
       await this.getConnection()
