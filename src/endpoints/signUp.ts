@@ -30,7 +30,7 @@ async function signUp(req: Request, res: Response){
       });
   } catch (err) {
     res
-      .status(400)
+      .status(422)
       .send({
         message: err.message || err.sqlMessage
       })
