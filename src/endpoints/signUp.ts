@@ -6,8 +6,11 @@ import Authenticator from "../services/Authenticator"
 
 async function signUp(req: Request, res: Response){
   try {
-    const { name, email, password } = req.body
-    const id = IdGenerator.generate()
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const id = IdGenerator.generate();
 
     if(!name || !email || !password) {
       throw new Error(`${name}, ${email}, ${password} são obrigatorios`)
