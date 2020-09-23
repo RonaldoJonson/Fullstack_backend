@@ -7,11 +7,13 @@ import getOwnProfile from "./endpoints/getOwnProfile";
 import getUserById from "./endpoints/getUserById";
 import { CreateVideo } from "./endpoints/createVideo";
 import { GetVideos } from './endpoints/GetVideo';
+import cors from "cors";
 
 dotenv.config();
 
-const app = express()
-app.use(express.json())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 app.post('/signup', signUp)
 app.post('/login', login)
@@ -21,7 +23,7 @@ app.get('/user/:id', getUserById)
 app.post('/video', CreateVideo);
 app.get('/video', GetVideos);
 
-const server = app.listen(process.env.PORT || 4000, () => {
+const server = app.listen(process.env.PORT || 3003, () => {
   if(server) {
     const address = server.address() as AddressInfo;
     console.log(`Server is running in http://localhost:${address.port}`);
