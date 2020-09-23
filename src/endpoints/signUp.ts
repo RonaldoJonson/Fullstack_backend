@@ -10,7 +10,7 @@ async function signUp(req: Request, res: Response){
     const id = IdGenerator.generate()
 
     if(!name || !email || !password) {
-      throw new Error("\"name\", \"email\" e \"password\" são obrigatórios.")
+      throw new Error(`${name}, ${email}, ${password} são obrigatorios`)
     }
     
     const passwordHash = await new HashManger().hash(password)
