@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import BaseDB from './BaseDatabase';
 
 export default class VideoDB extends BaseDB{
