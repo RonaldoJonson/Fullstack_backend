@@ -4,16 +4,11 @@ import Authenticator from '../services/Authenticator';
 
 export const GetVideos = async (req: Request, res: Response) => {
     try {
-        const id = req.params.id as string;
-
-        const recipeDataBase = new VideoDB();
-        const feed = await recipeDataBase.GetVideos(id);
+        const videoDataBase = new VideoDB();
+        const feed = await videoDataBase.GetVideos();
 
         res.status(200).send({
-            id: feed.id,
-            name: feed.name,
-            description: feed.description,
-            createdAt: feed.created_at
+            feed
         })
 
     } catch (error) {

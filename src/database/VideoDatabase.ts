@@ -3,7 +3,7 @@ import BaseDB from './BaseDatabase';
 
 export default class VideoDB extends BaseDB{
 
-    static TABLE_NAME: string = 'video_Youtube';
+    static TABLE_NAME: string = 'Video_Youtube';
 
     public async CreateVideo (id:string, title:string, description:string, created_at: string, videoURL: string, owner_id: string) :Promise<void>{
         await this.getConnection()
@@ -17,14 +17,11 @@ export default class VideoDB extends BaseDB{
         }).into(VideoDB.TABLE_NAME)
     }
 
-    public async GetVideos (id: string) :Promise<any>{
+    public async GetVideos () :Promise<any>{
         const result = await this.getConnection()
         .select('*')
         .from(VideoDB.TABLE_NAME)
-        .where({
-            id
-        });
 
-        return result[0];
+        return result;
     }
 }
