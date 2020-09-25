@@ -16,6 +16,21 @@ export const GetVideos = async (req: Request, res: Response) => {
             message: error.message
         })
     }
+}
 
-    
+export const GetVideoById = async (req: Request, res: Response) => {
+    try {
+        const videoID = req.params.id
+        const videoDataBase = new VideoDB();
+        const video = await videoDataBase.GetVideosById(videoID);
+
+        res.status(200).send({
+            video
+        })
+
+    } catch (error) {
+        res.status(400).send({
+            message: error.message
+        })
+    }
 }

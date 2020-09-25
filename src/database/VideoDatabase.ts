@@ -24,4 +24,15 @@ export default class VideoDB extends BaseDB{
 
         return result;
     }
+
+    public async GetVideosById (id: string) :Promise<any>{
+        const result = await this.getConnection()
+        .select('*')
+        .from(VideoDB.TABLE_NAME)
+        .where({
+            id
+        });
+        
+        return result;
+    }
 }

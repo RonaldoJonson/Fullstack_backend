@@ -6,7 +6,7 @@ import login from "./endpoints/login";
 import getOwnProfile from "./endpoints/getOwnProfile";
 import getUserById from "./endpoints/getUserById";
 import { CreateVideo } from "./endpoints/createVideo";
-import { GetVideos } from './endpoints/GetVideo';
+import { GetVideos, GetVideoById } from './endpoints/GetVideo';
 import cors from "cors";
 
 dotenv.config();
@@ -24,6 +24,7 @@ app.get('/user/:id', getUserById)
 
 app.post('/video', CreateVideo);
 app.get('/video', GetVideos);
+app.get('/video/:id', GetVideoById);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if(server) {
