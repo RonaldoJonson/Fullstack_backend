@@ -11,17 +11,19 @@ export const CreateVideo = async(req: Request, res: Response) => {
         const url = req.body.url;
         const description = req.body.description;
 
-        if(!title || !description ){
-            throw new Error('Missing Parameter ' + title + " " + description + " " + url);
+        if(!title || !description || !url){
+            throw new Error('Missing Parameter ' + title + " " + description + " " + url + " " + Authenticator.getTokenData(token));
         }
 
         const id =  IdGenerator.generate();
 
         const userId = Authenticator.getTokenData(token)
+
         const recipeToken = Authenticator.generateToken({id});
 
         const recipeDatabase = new VideoDB()
-        await recipeDatabase.CreateVideo(id, title, description, moment().toString(), url, userId.id);
+        var formatted = moment(moment().toString()).format('YYYY-MM-DD');
+        await recipeDatabase.CreateVideo(id, title, description, formatted, userId.id, url);
 
         res.status(200).send({
             message: "Video Created",
@@ -30,7 +32,7 @@ export const CreateVideo = async(req: Request, res: Response) => {
 
 
     }catch (e) {
-        res.status(400).send({
+        res.status(444).send({
             message: e.message
         })
     }

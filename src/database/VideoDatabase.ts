@@ -5,15 +5,15 @@ export default class VideoDB extends BaseDB{
 
     static TABLE_NAME: string = 'Video_Youtube';
 
-    public async CreateVideo (id:string, title:string, description:string, created_at: string, videoURL: string, owner_id: string) :Promise<void>{
+    public async CreateVideo (id:string, title:string, description:string, created_at: string, created_by: string, url: string) :Promise<void>{
         await this.getConnection()
         .insert({
             id,
             title,
             description,
             created_at,
-            videoURL,
-            owner_id
+            created_by,
+            url,
         }).into(VideoDB.TABLE_NAME)
     }
 

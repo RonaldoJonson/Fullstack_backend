@@ -25,6 +25,7 @@ export const GetVideoById = async (req: Request, res: Response) => {
         const video = await videoDataBase.GetVideosById(videoID);
 
         res.status(200).send({
+            message: videoID,
             video
         })
 
