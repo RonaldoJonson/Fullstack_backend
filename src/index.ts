@@ -26,6 +26,8 @@ app.post('/video', CreateVideo);
 app.get('/video', GetVideos);
 app.get('/video/:id', GetVideoById);
 
+//console.log('teste');
+
 const server = app.listen(process.env.PORT || 3003, () => {
   if(server) {
     const address = server.address() as AddressInfo;
